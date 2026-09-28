@@ -1,0 +1,15 @@
+AI VIDEO SLOTS — V4
+
+The AI Video section is intentionally empty right now.
+
+When you are ready:
+1. Open script.js.
+2. Find: const videos=[];
+3. Add video objects with category values: ugc, pixar, podcast, or vsl.
+4. For Google Drive, set driveId to the file ID and thumbnail to a Drive thumbnail URL.
+5. Keep the source videos in 9:16 format for the portfolio player.
+
+Example:
+const videos=[
+  {id:1,category:'ugc',title:'My AI UGC Sample',description:'Short description.',driveId:'YOUR_DRIVE_ID',thumbnail:'https://drive.google.com/thumbnail?id=YOUR_DRIVE_ID&sz=w1000',label:'AI UGC'}
+];
