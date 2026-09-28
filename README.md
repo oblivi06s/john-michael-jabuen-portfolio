@@ -16,9 +16,6 @@ This version fixes the evidence sections so the Software Developer and Academic 
 ## Open the site
 Open `index.html` in a browser.
 
-## Add AI videos later
-See `HOW_TO_ADD_VIDEOS.txt` for the exact format. The video array in `script.js` is currently empty so no sample video is shown.
-
 ## V5 changes
 - Hero is now a two-column composition: headline/copy on the left and profile portrait on the right.
 - Software Developer projects are arranged as a 3-column x 2-row desktop grid, with the former oversized empty area removed.
