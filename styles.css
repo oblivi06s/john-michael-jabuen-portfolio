@@ -127,7 +127,10 @@ footer{font-size:15px}
 }
 
 
-/* Mobile video modal: keep the portrait player within the visible phone screen. */
+/* Mobile video modal.
+   The player is a Google Drive /preview iframe, which draws its own controls.
+   Those controls need the full dialog width, so the iframe fills the width and
+   only its height is capped. Drive letterboxes the 9:16 video inside it. */
 @media (max-width: 700px) {
   .modal {
     padding: 10px;
@@ -136,8 +139,8 @@ footer{font-size:15px}
   }
 
   .dialog {
-    width: min(94vw, 520px);
-    max-height: calc(100dvh - 20px);
+    width: min(100%, 520px);
+    max-height: 100%;
     display: flex;
     flex-direction: column;
     overflow-y: auto;
@@ -145,12 +148,12 @@ footer{font-size:15px}
   }
 
   .player {
-    /* 56dvh tall, with the matching 9:16 width. */
-    width: min(86vw, 31.5dvh);
-    height: min(56dvh, 520px);
+    width: 100%;
     max-height: none;
     aspect-ratio: 9 / 16;
-    flex: 0 0 auto;
+    /* Shrink to leave room for the caption; scroll only on very short screens. */
+    flex: 0 1 auto;
+    min-height: min(300px, 60dvh);
   }
 
   .player iframe {
@@ -161,13 +164,18 @@ footer{font-size:15px}
 
   .modalcopy {
     flex: 0 0 auto;
-    padding: 14px 18px 16px;
+    padding: 14px 62px 16px 18px;
+  }
+
+  /* Sit in the caption, so it does not cover Drive's own top-right button. */
+  #close {
+    top: auto;
+    bottom: 14px;
   }
 
   .modalcopy h3 {
     font-size: 19px;
     line-height: 1.25;
-    padding-right: 28px;
   }
 
   .modalcopy p {
@@ -176,16 +184,47 @@ footer{font-size:15px}
   }
 }
 
-/* Also constrain the player on short screens, including landscape phones. */
-@media (max-height: 600px) and (max-width: 900px) {
+/* Landscape phones: put the caption beside the player so the video gets the full height. */
+@media (orientation: landscape) and (max-height: 600px) and (max-width: 1000px) {
+  .modal {
+    padding: 8px max(8px, env(safe-area-inset-right)) 8px max(8px, env(safe-area-inset-left));
+  }
+
   .dialog {
-    max-height: calc(100dvh - 16px);
-    overflow-y: auto;
+    width: min(100%, 760px);
+    height: 100%;
+    max-height: 100%;
+    display: flex;
+    flex-direction: row;
+    overflow: hidden;
   }
 
   .player {
-    width: min(70vw, 28dvh);
-    height: min(50dvh, 420px);
+    width: min(55%, 420px);
+    height: auto;
+    max-height: none;
+    min-height: 0;
+    aspect-ratio: auto;
+    flex: 0 0 auto;
+    margin: 0;
+  }
+
+  .player iframe {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+
+  .modalcopy {
+    flex: 1 1 auto;
+    align-self: center;
+    min-width: 0;
+    padding: 18px 56px 18px 20px;
+  }
+
+  #close {
+    top: 10px;
+    bottom: auto;
   }
 }
 
