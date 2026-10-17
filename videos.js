@@ -22,17 +22,17 @@ const videos = [
         label: "AI UGC"
     },
 
-
     {
         id: 2,
         category: "vsl",
-        title: "Educational VSL",
-        description: "A video sales letter that educates everyone regarding parasites.",
-        driveId: "1dqkHQcOa_SajV2vIaXhswr9SwQUigkdx",
-        thumbnail: "https://drive.google.com/thumbnail?id=1dqkHQcOa_SajV2vIaXhswr9SwQUigkdx&sz=w1000",
+        title: "Kleone Copper Antenna",
+        description: "What happened to real food.",
+        driveId: "1Ukk1-iPP41IujdX6R38yUh2y8791ajC5",
+        thumbnail: "https://drive.google.com/thumbnail?id=1Ukk1-iPP41IujdX6R38yUh2y8791ajC5&sz=w1000",
         label: "VSL"
     },
 
+    
     {
         id: 3,
         category: "animation",
@@ -47,14 +47,78 @@ const videos = [
         id: 4,
         category: "ugc",
         title: "Kleone Copper Antenna",
+        description: "A story-driven AI UGC video.",
+        driveId: "10lLeIchlvwSb0S9TSxF7tjNCf7C_mZro",
+        thumbnail: "https://drive.google.com/thumbnail?id=10lLeIchlvwSb0S9TSxF7tjNCf7C_mZro&sz=w1000",
+        label: "AI UGC"
+    },
+
+    
+    {
+        id: 5,
+        category: "vsl",
+        title: "Kleone Copper Antenna",
+        description: " Most copper antennas online are plated junk",
+        driveId: "1j0ZbfAC85l-uhUEItUjsmCKGNQF2QYSo",
+        thumbnail: "https://drive.google.com/thumbnail?id=1j0ZbfAC85l-uhUEItUjsmCKGNQF2QYSo&sz=w1000",
+        label: "VSL"
+    },
+
+    {
+        id: 6,
+        category: "animation",
+        title: "AI 3D Cartoon",
+        description: "A copper method from 1920 goes in before the first freeze and works all winter",
+        driveId: "11Te1i2vpCU0GyDx3dzVYh25Gv_znUS74",
+        thumbnail: "https://drive.google.com/thumbnail?id=11Te1i2vpCU0GyDx3dzVYh25Gv_znUS74&sz=w1000",
+        label: "Animation"
+    },
+
+    {
+        id: 7,
+        category: "ugc",
+        title: "Kleone Copper Antenna",
+        description: "The fertilizer bag is built to run out — that's the business.",
+        driveId: "1r-tdiIyN59dPOYfb76Eyqfs54x6YdG_D",
+        thumbnail: "https://drive.google.com/thumbnail?id=1r-tdiIyN59dPOYfb76Eyqfs54x6YdG_D&sz=w1000",
+        label: "AI UGC"
+    },
+
+    {
+        id: 8,
+        category: "vsl",
+        title: "Kleone Copper Antenna",
+        description: "If your garden gave you less this year, it was never your hands.",
+        driveId: "1E1HsXTB-WK_etZyGJLXrCWWiErUoSFAA",
+        thumbnail: "https://drive.google.com/thumbnail?id=1E1HsXTB-WK_etZyGJLXrCWWiErUoSFAA&sz=w1000",
+        label: "VSL"
+    },
+
+
+    {
+        id: 9,
+        category: "ugc",
+        title: "Kleone Copper Antenna",
         description: "A farmer whose family hasn't bought fertilizer in four generations shows the copper his great-grandfather left in the barn.",
         driveId: "1o7BFAzvgHLrAvRlsKChY7sJFEv_hBKOo",
         thumbnail: "https://drive.google.com/thumbnail?id=1o7BFAzvgHLrAvRlsKChY7sJFEv_hBKOo&sz=w1000",
         label: "AI UGC"
     },
 
+
     {
-        id: 5,
+        id: 10,
+        category: "vsl",
+        title: "Educational VSL",
+        description: "A video sales letter that educates everyone regarding parasites.",
+        driveId: "1dqkHQcOa_SajV2vIaXhswr9SwQUigkdx",
+        thumbnail: "https://drive.google.com/thumbnail?id=1dqkHQcOa_SajV2vIaXhswr9SwQUigkdx&sz=w1000",
+        label: "VSL"
+    },
+
+
+    {
+        id: 11,
         category: "vsl",
         title: "Product VSL",
         description: "A video sales letter with storytelling and product visuals.",
@@ -64,7 +128,7 @@ const videos = [
     },
 
     {
-        id: 6,
+        id: 12,
         category: "animation",
         title: "AI 3D Cartoon",
         description: "1925: every farmer's wife on the road asks her the same question. It was a copper antenna.",
@@ -74,7 +138,7 @@ const videos = [
     },
 
     {
-        id: 7,
+        id: 13,
         category: "ugc",
         title: "Copper Antenna",
         description: "Woman, 60s, looking at a stack of fertilizer bags in the garage.",
@@ -84,7 +148,7 @@ const videos = [
     },
     
     {
-        id: 8,
+        id: 14,
         category: "ugc",
         title: "Copper Antenna",
         description: "A skeptic opens the box, thinks they look like a shop-class project.",
@@ -94,7 +158,7 @@ const videos = [
     },
 
     {
-        id: 9,
+        id: 15,
         category: "animation",
         title: "AI 3D Cartoon",
         description: "Every village had one man who said it was nonsense.",
@@ -104,7 +168,7 @@ const videos = [
     },
 
     {
-        id: 10,
+        id: 16,
         category: "animation",
         title: "AI 3D Cartoon",
         description: "Grandma's secret wasn't in the soil. It was IN the soil.",
@@ -114,7 +178,7 @@ const videos = [
     },
 
     {
-        id: 11,
+        id: 17,
         category: "ugc",
         title: "JUPI Hydration Product",
         description: "A story-driven AI UGC video.",
@@ -125,7 +189,7 @@ const videos = [
     
 
     {
-        id: 12,
+        id: 18,
         category: "ugc",
         title: "JUPI Hydration Product",
         description: "An AI UGC video featuring a product story.",
@@ -135,7 +199,7 @@ const videos = [
     },
 
     {
-        id: 13,
+        id: 19,
         category: "ugc",
         title: "JUPI Hydration Product",
         description: "An AI UGC video teaching remedy and featuring a product.",
@@ -145,7 +209,7 @@ const videos = [
     },
 
     {
-        id: 14,
+        id: 20,
         category: "ugc",
         title: "Soursop Bitters",
         description: "A symptom-driven AI UGC video.",
@@ -155,7 +219,7 @@ const videos = [
     },
 
     {
-        id: 15,
+        id: 21,
         category: "ugc",
         title: "Recipe Video",
         description: "An AI UGC Video teaching healthy recipe.",
@@ -165,7 +229,7 @@ const videos = [
     },
 
     {
-        id: 16,
+        id: 22,
         category: "ugc",
         title: "JUPI Hydration Product",
         description: "A warning-driven AI UGC Video.",
@@ -175,7 +239,7 @@ const videos = [
     },
 
     {
-        id: 17,
+        id: 23,
         category: "ugc",
         title: "Soursop Bitters",
         description: "AI UGC Video that promotes healthy habits.",
@@ -185,7 +249,7 @@ const videos = [
     },
 
     {
-        id: 18,
+        id: 24,
         category: "ugc",
         title: "Blueberry Tips",
         description: "AI UGC Video that reveals a secret.",
@@ -195,7 +259,7 @@ const videos = [
     },
 
     {
-        id: 19,
+        id: 25,
         category: "vsl",
         title: "Warning VSL",
         description: "A video sales letter that provides symptoms and remedy.",
@@ -206,7 +270,7 @@ const videos = [
 
 
     {
-        id: 20,
+        id: 26,
         category: "podcast",
         title: "Testimony Podcast",
         description: "A podcast-style ad that provides first-hand experience.",
