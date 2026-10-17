@@ -1,86 +1,327 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>John Michael E. Jabuen — Portfolio</title>
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>John Michael E. Jabuen — AI Video Production</title>
+<meta name="description" content="AI-assisted UGC ads, video sales letters, animations and podcast videos by John Michael E. Jabuen. Computer Science graduate and award-winning tutor.">
+<meta name="theme-color" content="#07090d">
+<meta property="og:type" content="website">
+<meta property="og:title" content="John Michael E. Jabuen — AI Video Production">
+<meta property="og:description" content="AI UGC ads, VSLs, animations and podcast videos for brands, creators and businesses.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@1,700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-<header><a class="brand" href="#top">JMEJ<span>.</span></a><nav><a href="#paths">Explore</a><a href="#about">About</a><a href="#contact">Contact</a></nav><button class="menu">☰</button></header>
-<main id="top">
-<section class="landing">
-<div class="topline"><div class="eyebrow"><i></i> JOHN MICHAEL E. JABUEN</div><div class="status"><b></b> CODE · EDUCATION · AI MEDIA</div></div>
-<div class="intro"><div class="hero-copy"><small>A COMPUTER SCIENCE GRADUATE WITH THREE WAYS TO CREATE VALUE.</small><h1>Choose a side<br><em>of my work.</em></h1><p>Software development. Academic learning. AI-powered video production. Pick the area you're here for and jump straight into the work.</p></div><div class="hero-photo"><img src="assets/profile.jpg" alt="John Michael E. Jabuen"></div></div>
-<div id="paths" class="paths">
-<a class="path software" href="#software"><span class="num">01</span><div class="icon">&lt;/&gt;</div><small>COMPUTER SCIENCE · SOFTWARE</small><h2>Software<br><em>Developer</em></h2><p>Programming, systems thinking and an undergraduate research project presented at NIDS 2026.</p><strong>Explore development ↗</strong></a>
-<a class="path education" href="#education"><span class="num">02</span><div class="icon">∑</div><small>BRAINBOX · EDUCATION</small><h2>Academic Tutor<br><em>& Review Master</em></h2><p>Mathematics and Programming support, review classes, recognition and real classroom work.</p><strong>View academic work ↗</strong></a>
-<a class="path video" href="#video"><span class="num">03</span><div class="icon">▶</div><small>AI MEDIA · CREATIVE PRODUCTION</small><h2>AI Video<br><em>Editor</em></h2><p>AI UGC, Cartoon-style visuals, podcast content and VSLs — presented as playable work.</p><strong>Watch the work ↗</strong></a>
-</div><div class="scroll">— SCROLL TO DISCOVER —</div>
-</section>
+<a class="skip-link" href="#main">Skip to content</a>
 
-<section id="software" class="section">
-<div class="head"><span class="index">01</span><div><div class="eyebrow"><i></i> SOFTWARE DEVELOPMENT</div><h2>Building with a<br><em>technical foundation.</em></h2><p>Computer Science training applied to optimization, algorithms, multithreading and practical software systems.</p></div></div>
-<div class="devgrid">
-<article class="card thesis"><label>UNDERGRADUATE RESEARCH <b>NIDS 2026</b></label><div class="research-hero"><img src="assets/software/nids-title.jpg" alt="NIDS 2026 research presentation title slide"></div><h3>Multithreaded Multi-Colony Ant Colony Optimization for Sudoku</h3><p>Research on a multithreaded multi-colony ant colony optimization framework using ring and random communication topologies for large-scale Sudoku.</p><div class="lines"><span>01 Constraint Propagation</span><span>02 ACO / MMAS</span><span>03 Dynamic Collaboration</span><span>04 Multithreading</span></div><a class="textlink" href="assets/docs/NIDS_Presentation_Slides_v3.pdf" target="_blank">Open full presentation ↗</a></article>
-<article class="card"><label>RESEARCH EVIDENCE</label><div class="mini-proof"><img src="assets/software/nids-certificate.jpg" alt="NIDS 2026 certificate"></div><h3>Conference Presentation</h3><p>Presented at the 6th International Conference on Novel & Intelligent Digital Systems (NIDS 2026), University of West Attica, Athens.</p><a class="textlink" href="assets/docs/NiDS2026-John-Michael-Jabuen.pdf" target="_blank">View certificate ↗</a></article>
-<article class="card"><label>RESULTS · 25×25 SUDOKU</label><div class="mini-proof"><img src="assets/software/nids-results.jpg" alt="NIDS 2026 Sudoku results slide"></div><h3>Experimental Results</h3><p>The presentation reports testing across 9×9, 16×16 and 25×25 Sudoku instances and examines thread scaling, success rate and solution time.</p></article>
-<article class="card wide-proof"><label>METHODOLOGY</label><div class="method-img"><img src="assets/software/nids-methodology.jpg" alt="NIDS methodology slide"></div><div><h3>Systems & Algorithm Design</h3><p>Constraint propagation, ant colony systems, Min-Max ant systems, pheromone fusion, public path recommendation and cooperative mechanisms form the research workflow.</p></div></article>
-<article class="card"><label>PROGRAMMING · FOUNDATION</label><div class="langs"><b>PY</b><b>JAVA</b><b>C++</b><b>JS</b></div><h3>Programming & Systems</h3><p>Programming experience across Python, Java, C++, web fundamentals and API-oriented workflows.</p></article>
-<article class="card"><label>CURRENT DIRECTION</label><h3>AI Automation</h3><p>Exploring practical automation using APIs, LLMs, n8n and CRM workflows.</p><div class="flow">INPUT <b>→</b> AI <b>→</b> ACTION</div></article>
-</div>
-</section>
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="brand" href="#top" aria-label="John Michael E. Jabuen, back to top">JMEJ<span>.</span></a>
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
+      <span class="menu-icon" aria-hidden="true"></span><span class="sr-only">Menu</span>
+    </button>
+    <nav id="site-nav" class="site-nav" aria-label="Main">
+      <a href="#work">Video Work</a>
+      <a href="#teaching">Teaching</a>
+      <a href="#engineering">Engineering</a>
+      <a href="#about">About</a>
+      <a class="btn btn-primary btn-sm" href="#contact">Let's Work Together</a>
+    </nav>
+  </div>
+</header>
 
-<section id="education" class="section">
-<div class="head"><span class="index">02</span><div><div class="eyebrow"><i></i> BRAINBOX · EDUCATION</div><h2>Teaching, reviewing,<br><em>making things click.</em></h2><p>Academic tutoring and review work backed by employment records, recognition and classroom photographs.</p></div></div>
-<div class="edugrid">
-<article class="card profile"><div class="class-feature"><img src="assets/tutor/700445751_1495220125480691_3133493539450357762_n.jpg" alt="Academic review class"></div><div><label>ACADEMIC SUPPORT</label><h3>Academic Tutor</h3><p>Mathematics and Programming support focused on turning difficult concepts into understandable steps.</p><a class="textlink" href="assets/docs/Certificate of Employment_Jabuen.pdf" target="_blank">View employment certificate ↗</a></div></article>
-<article class="card profile"><div class="class-feature"><img src="assets/tutor/Brainbox Congrats Graduates.jpg" alt="Brainbox graduates class photo"></div><div><label>REVIEW MASTER</label><h3>Class Leadership</h3><p>Review-class experience with college entrance examination preparation and structured classroom presentation.</p><a class="textlink" href="#classroom">See classroom work ↓</a></div></article>
-</div>
-<div class="achievements"><div><b>200+</b><span>Reviewer items contributed to the Brainbox Civil Service Reviewer Book</span></div><div><b>UPCAT</b><span>Review-class and college entrance examination preparation</span></div><div><b>RECOGNITION</b><span>Best Tutor awards and Tutor of the Year 2025</span></div></div>
-<div class="recognition"><div class="section-label"><label>CERTIFICATES & RECOGNITION</label><h3>Documented recognition.</h3><p>Actual certificates are included in the portfolio rather than represented by placeholders.</p></div><div class="cert-grid">
-<figure><img src="assets/tutor/Best Tutor for August 2024.jpg" alt="Best Tutor for August 2024"><figcaption>Best Tutor · August 2024</figcaption></figure>
-<figure><img src="assets/tutor/Best Tutor for December 2024.jpg" alt="Best Tutor for December 2024"><figcaption>Best Tutor · December 2024</figcaption></figure>
-<figure><img src="assets/tutor/Best Tutor for January 2025.jpg" alt="Best Tutor for January 2025"><figcaption>Best Tutor · January 2025</figcaption></figure>
-<figure><img src="assets/tutor/Best Tutor for January 2026.jpg" alt="Best Tutor for January 2026"><figcaption>Best Tutor · January 2026</figcaption></figure>
-<figure class="doc-figure">
-<a href="assets/docs/Certification_Jabuen.pdf" target="_blank" rel="noopener">
-<img class="doc-preview" src="assets/tutor/previews/tutor-of-the-year.png" alt="Preview of the original Tutor of the Year 2025 certificate">
-<div class="doc-copy"><span>PDF CERTIFICATE</span><strong>Tutor of the Year 2025</strong><small>Open original certificate ↗</small></div>
-</a></figure>
-<figure class="doc-figure">
-<a href="assets/docs/Certificate of Employment_Jabuen.pdf" target="_blank" rel="noopener">
-<img class="doc-preview" src="assets/tutor/previews/employment-certificate.png" alt="Preview of the original Certificate of Employment">
-<div class="doc-copy"><span>PDF CERTIFICATE</span><strong>Tutor &amp; Review Master</strong><small>Open original employment certificate ↗</small></div>
-</a></figure>
-</div></div>
-<div id="classroom" class="classroom"><div class="section-label"><label>BEYOND THE CERTIFICATES</label><h3>Real classroom work.</h3><p>A visual record of review-class and Brainbox activities.</p></div><div class="class-grid">
-<img src="assets/tutor/700445751_1495220125480691_3133493539450357762_n.jpg" alt="Brainbox class photo 1">
-<img src="assets/tutor/720397750_1639217517159676_3843404340091230438_n.jpg" alt="Brainbox class photo 2">
-<img src="assets/tutor/721465364_2033568594703119_8711964247246816708_n.jpg" alt="Brainbox class photo 3">
-<img src="assets/tutor/720919235_3984305228367713_3893626071503872297_n.jpg" alt="Brainbox class photo 4">
-<img src="assets/tutor/721949476_1024691403312701_7175102077237797734_n.jpg" alt="Brainbox class photo 5">
-<img src="assets/tutor/701311239_4500505386938055_3124180989530284957_n.jpg" alt="Brainbox class photo 6">
-</div></div>
-</section>
+<main id="main">
 
-<section id="video" class="section"><div class="head"><span class="index">03</span><div><div class="eyebrow"><i></i> AI VIDEO EDITOR</div><div class="client-work-badge">REAL CLIENT WORK</div><h2>Ideas turned into<br><em>watchable stories.</em></h2><p>A selection of AI-powered videos created for real client projects, including AI UGC, Cartoon-style visuals, podcast content and VSLs.</p></div></div>
-<div class="tabs"><button class="active" data-filter="all">ALL</button><button data-filter="ugc">AI UGC</button><button data-filter="animation">ANIMATION</button><button data-filter="podcast">PODCAST</button><button data-filter="vsl">VSL</button></div><div id="videoGrid" class="videos"></div>
-</section>
+  <!-- A. Hero -->
+  <section id="top" class="hero">
+    <div class="container hero-grid">
+      <div class="hero-copy">
+        <p class="eyebrow">AI Video Production</p>
+        <h1>AI-assisted videos that <em>bring ideas to life.</em></h1>
+        <p class="lead">I create AI UGC-style ads, video sales letters, animations and podcast videos for brands, creators and businesses.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#work">View My Work</a>
+          <a class="btn btn-ghost" href="#contact">Let's Work Together</a>
+        </div>
+        <ul class="hero-facts">
+          <li><strong data-video-count>20</strong> video samples</li>
+          <li><strong>4</strong> formats: UGC · VSL · Animation · Podcast</li>
+          <li>Includes <strong>real client work</strong></li>
+        </ul>
+      </div>
+      <figure class="hero-photo">
+        <img src="assets/optimized/profile-800.jpg" width="800" height="1433" alt="Portrait of John Michael E. Jabuen" fetchpriority="high">
+        <figcaption><strong>John Michael E. Jabuen</strong><span>AI Video Editor · BS Computer Science</span></figcaption>
+      </figure>
+    </div>
+  </section>
 
-<section id="about" class="section about"><div class="eyebrow"><i></i> THE THREAD BETWEEN IT ALL</div><div class="aboutgrid"><h2>Curious by nature.<br><em>Technical by training.</em></h2><div><p class="large">I'm <strong class="name-highlight">John Michael E. Jabuen</strong>, a Computer Science graduate who works across software, education and AI-powered media.</p>
-    
-<div class="education-credential">
-    <span class="credential-label">EDUCATION</span>
-    <h3>University of the Philippines Tacloban</h3>
-    <p>Bachelor of Science in Computer Science</p>
-</div>
+  <!-- B. AI Video Production -->
+  <section id="work" class="section section-work" aria-labelledby="work-title">
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow">01 · AI Video Production</p>
+        <h2 id="work-title">Video work, <em>ready to watch.</em></h2>
+        <p>AI-assisted short-form ads, sales videos, animated stories and podcast content. The selection includes work produced for real client projects.</p>
+      </div>
 
-<p>These areas share the same core: understanding a problem, structuring information and turning an idea into something people can use or understand.</p><div class="identity">CODE <b>×</b> TEACH <b>×</b> CREATE</div></div></div></section>
-<section id="contact" class="contact"><div class="eyebrow"><i></i> HAVE A PROJECT, CLASS, OR COLLABORATION?</div><h2>Let's build something<br><em>worth remembering.</em></h2><p>Choose the area you're interested in and start a conversation.</p><a class="contact-email" href="mailto:johnmichaeljabuen11@gmail.com">johnmichaeljabuen11@gmail.com</a><div class="buttons"><a href="mailto:johnmichaeljabuen11@gmail.com?subject=Software%20Development%20Inquiry">Email ↗</a><a href="https://www.linkedin.com/in/john-michael-jabuen-7413a0261" target="_blank" rel="noopener">LinkedIn ↗</a><a href="https://wa.me/639813743029" target="_blank" rel="noopener">WhatsApp ↗</a><a href="https://www.onlinejobs.ph/jobseekers/info/2896074" target="_blank" rel="noopener">OnlineJobsPH ↗</a></div></section>
+      <div class="filters" role="group" aria-label="Filter videos by category" id="videoFilters"></div>
+      <div id="videoGrid" class="video-grid" aria-live="polite"></div>
+      <div class="more-row"><button id="videoMore" class="btn btn-ghost" type="button" hidden></button></div>
+      <noscript><p class="notice">Turn on JavaScript to browse and play the video samples.</p></noscript>
+    </div>
+  </section>
+
+  <!-- C. Teaching & Recognition -->
+  <section id="teaching" class="section" aria-labelledby="teaching-title">
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow eyebrow-blue">02 · Teaching &amp; Recognition</p>
+        <h2 id="teaching-title">Teaching that makes <em>hard topics click.</em></h2>
+        <p>Tutor and Review Master at Brainbox Tutorial &amp; Review Center in Tacloban City since August 2, 2024.</p>
+      </div>
+
+      <article class="card award-feature">
+        <a class="doc-thumb" href="assets/docs/Certification_Jabuen.pdf" target="_blank" rel="noopener">
+          <img src="assets/optimized/tutor-of-the-year.jpg" width="700" height="906" loading="lazy" alt="Original Tutor of the Year 2025 certification from Brainbox Tutorial and Review Center">
+        </a>
+        <div class="award-copy">
+          <p class="tag tag-blue">Top recognition</p>
+          <h3>Tutor of the Year 2025</h3>
+          <p>Awarded by Brainbox Tutorial &amp; Review Center on December 10, 2025, for outstanding performance, dedication and commitment to quality tutoring.</p>
+          <a class="text-link" href="assets/docs/Certification_Jabuen.pdf" target="_blank" rel="noopener">View original certificate (PDF) <span aria-hidden="true">↗</span></a>
+        </div>
+      </article>
+
+      <h3 class="sub-head">Best Tutor of the Month</h3>
+      <ul class="award-grid">
+        <li><button class="award-card" type="button" data-viewer="assets/tutor/Best Tutor for August 2024.jpg" data-caption="Best Tutor of the Month · August 2024">
+          <img src="assets/optimized/best-tutor-august-2024.jpg" width="640" height="905" loading="lazy" alt="Best Tutor of the Month certificate, August 2024">
+          <span>August 2024</span></button></li>
+        <li><button class="award-card" type="button" data-viewer="assets/tutor/Best Tutor for December 2024.jpg" data-caption="Best Tutor of the Month · December 2024">
+          <img src="assets/optimized/best-tutor-december-2024.jpg" width="640" height="905" loading="lazy" alt="Best Tutor of the Month certificate, December 2024">
+          <span>December 2024</span></button></li>
+        <li><button class="award-card" type="button" data-viewer="assets/tutor/Best Tutor for January 2025.jpg" data-caption="Best Tutor of the Month · January 2025">
+          <img src="assets/optimized/best-tutor-january-2025.jpg" width="509" height="720" loading="lazy" alt="Best Tutor of the Month certificate, January 2025">
+          <span>January 2025</span></button></li>
+        <li><button class="award-card" type="button" data-viewer="assets/tutor/Best Tutor for January 2026.jpg" data-caption="Best Tutor of the Month · January 2026">
+          <img src="assets/optimized/best-tutor-january-2026.jpg" width="640" height="640" loading="lazy" alt="Best Tutor of the Month certificate, January 2026">
+          <span>January 2026</span></button></li>
+      </ul>
+
+      <div class="teach-grid">
+        <article class="card">
+          <p class="tag tag-blue">Experience</p>
+          <h3>Tutor &amp; Review Master</h3>
+          <p class="meta">Brainbox Tutorial &amp; Review Center · Since August 2, 2024</p>
+          <ul class="checklist">
+            <li>Mathematics and Programming tutoring</li>
+            <li>UPCAT (college entrance exam) review classes</li>
+            <li>200+ reviewer items written for the Brainbox Civil Service Reviewer Book</li>
+          </ul>
+          <a class="text-link" href="assets/docs/Certificate of Employment_Jabuen.pdf" target="_blank" rel="noopener">View certificate of employment (PDF) <span aria-hidden="true">↗</span></a>
+        </article>
+        <article class="card">
+          <p class="tag tag-blue">Why it matters for clients</p>
+          <h3>Clear communication</h3>
+          <p>Teaching review classes means explaining complex ideas simply and keeping an audience engaged. I bring the same habits to scripting and editing videos.</p>
+        </article>
+      </div>
+
+      <h3 class="sub-head">UPCAT review classes</h3>
+      <ul class="photo-grid">
+        <li><button type="button" data-viewer="assets/tutor/700445751_1495220125480691_3133493539450357762_n.jpg" data-caption="UPCAT review class at Brainbox"><img src="assets/optimized/upcat-class-1.jpg" width="960" height="720" loading="lazy" alt="UPCAT review class group photo at Brainbox, 1 of 6"></button></li>
+        <li><button type="button" data-viewer="assets/tutor/720397750_1639217517159676_3843404340091230438_n.jpg" data-caption="UPCAT review class at Brainbox"><img src="assets/optimized/upcat-class-2.jpg" width="960" height="720" loading="lazy" alt="UPCAT review class group photo at Brainbox, 2 of 6"></button></li>
+        <li><button type="button" data-viewer="assets/tutor/721465364_2033568594703119_8711964247246816708_n.jpg" data-caption="UPCAT review class at Brainbox"><img src="assets/optimized/upcat-class-3.jpg" width="960" height="720" loading="lazy" alt="UPCAT review class group photo at Brainbox, 3 of 6"></button></li>
+        <li><button type="button" data-viewer="assets/tutor/720919235_3984305228367713_3893626071503872297_n.jpg" data-caption="UPCAT review class at Brainbox"><img src="assets/optimized/upcat-class-4.jpg" width="960" height="720" loading="lazy" alt="UPCAT review class group photo at Brainbox, 4 of 6"></button></li>
+        <li><button type="button" data-viewer="assets/tutor/721949476_1024691403312701_7175102077237797734_n.jpg" data-caption="UPCAT review class at Brainbox"><img src="assets/optimized/upcat-class-5.jpg" width="960" height="720" loading="lazy" alt="UPCAT review class group photo at Brainbox, 5 of 6"></button></li>
+        <li><button type="button" data-viewer="assets/tutor/701311239_4500505386938055_3124180989530284957_n.jpg" data-caption="UPCAT review class at Brainbox"><img src="assets/optimized/upcat-class-6.jpg" width="960" height="720" loading="lazy" alt="UPCAT review class group photo at Brainbox, 6 of 6"></button></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- D. Software Engineering & Automation -->
+  <section id="engineering" class="section" aria-labelledby="engineering-title">
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow">03 · Software Engineering &amp; Automation</p>
+        <h2 id="engineering-title">A Computer Science <em>foundation.</em></h2>
+        <p>Research, programming and automation work. Each project is labeled as research, learning or client work.</p>
+      </div>
+
+      <article class="card case-study">
+        <div class="case-media">
+          <button type="button" class="media-btn" data-viewer="assets/software/nids-title.jpg" data-caption="NIDS 2026 presentation title slide">
+            <img src="assets/optimized/nids-title.jpg" width="900" height="507" loading="lazy" alt="Title slide of the NIDS 2026 research presentation">
+          </button>
+          <div class="case-thumbs">
+            <button type="button" class="media-btn" data-viewer="assets/software/nids-methodology.jpg" data-caption="Methodology slide">
+              <img src="assets/optimized/nids-methodology.jpg" width="900" height="507" loading="lazy" alt="Methodology slide from the research presentation">
+            </button>
+            <button type="button" class="media-btn" data-viewer="assets/software/nids-results.jpg" data-caption="Results for 25×25 Sudoku">
+              <img src="assets/optimized/nids-results.jpg" width="900" height="507" loading="lazy" alt="Results table for 25 by 25 Sudoku from the research presentation">
+            </button>
+            <button type="button" class="media-btn" data-viewer="assets/software/nids-certificate.jpg" data-caption="NIDS 2026 certificate of participation">
+              <img src="assets/optimized/nids-certificate.jpg" width="900" height="1273" loading="lazy" alt="NIDS 2026 certificate of participation">
+            </button>
+          </div>
+        </div>
+        <div class="case-copy">
+          <p class="tag">Academic research · NIDS 2026</p>
+          <h3>A Multithreaded Multi-Colony Ant Colony Optimization Framework with Ring and Random Communication Topologies for Solving Large-Scale Sudoku</h3>
+          <p class="meta">Presented at the 6th International Conference on Novel &amp; Intelligent Digital Systems (NIDS 2026), University of West Attica, Athens, Greece · September 23–25, 2026</p>
+          <dl class="case-facts">
+            <div><dt>Problem</dt><dd>Existing ant-colony Sudoku solvers run in a single thread, and their success rate drops sharply on large 25×25 puzzles.</dd></div>
+            <div><dt>Approach</dt><dd>Several cooperating ant colonies run in parallel threads and share solutions through ring and random communication topologies, combined with constraint propagation.</dd></div>
+            <div><dt>My role</dt><dd>Presenting author, with co-authors Gian Myrl D. Renomeron and John Paul T. Yusiong.</dd></div>
+            <div><dt>Reported results</dt><dd>On the ten 25×25 test puzzles, the multithreaded solver reached an 83–100% success rate, matching or beating both single-threaded baselines on every puzzle. Full tables are in the slides.</dd></div>
+          </dl>
+          <div class="link-row">
+            <a class="text-link" href="assets/docs/NIDS_Presentation_Slides_v3.pdf" target="_blank" rel="noopener">Presentation slides (PDF) <span aria-hidden="true">↗</span></a>
+            <a class="text-link" href="assets/docs/NiDS2026-John-Michael-Jabuen.pdf" target="_blank" rel="noopener">Certificate (PDF) <span aria-hidden="true">↗</span></a>
+          </div>
+        </div>
+      </article>
+
+      <div class="eng-grid">
+        <article class="card">
+          <p class="tag">Foundation</p>
+          <h3>Programming</h3>
+          <p>BS Computer Science, University of the Philippines Tacloban. Research and projects in algorithms, optimization and multithreading.</p>
+          <ul class="chips">
+            <li>Python</li><li>Java</li><li>C++</li><li>C</li><li>HTML/CSS/JS</li>
+          </ul>
+        </article>
+        <article class="card">
+          <p class="tag tag-muted">Learning in progress</p>
+          <h3>Workflow automation</h3>
+          <p>Building practice workflows that connect forms, CRMs and AI tools. These are learning projects, not deployed client systems yet. Demos will be added here as they are finished.</p>
+          <ul class="chips">
+            <li>n8n</li><li>GoHighLevel</li><li>APIs &amp; LLMs</li>
+          </ul>
+        </article>
+        <article class="card">
+          <p class="tag">Personal project</p>
+          <h3>This portfolio</h3>
+          <p>A hand-built static website (HTML, CSS and JavaScript) hosted on GitHub Pages, with a responsive video player and a contact form.</p>
+          <a class="text-link" href="https://github.com/oblivi06s" target="_blank" rel="noopener">GitHub · oblivi06s <span aria-hidden="true">↗</span></a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- E. About -->
+  <section id="about" class="section" aria-labelledby="about-title">
+    <div class="container about-grid">
+      <figure class="about-photo">
+        <img src="assets/optimized/brainbox-graduates.jpg" width="720" height="833" loading="lazy" alt="Brainbox graphic congratulating John Michael Jabuen on graduating with a BS in Computer Science">
+      </figure>
+      <div class="about-copy">
+        <p class="eyebrow">About</p>
+        <h2 id="about-title">Creative work, <em>technical discipline.</em></h2>
+        <p class="lead">I'm <strong>John Michael E. Jabuen</strong>, a Computer Science graduate from the University of the Philippines Tacloban.</p>
+        <p>I produce AI-assisted videos for brands and creators. Teaching taught me to explain ideas clearly and hold attention. Computer Science taught me to structure problems, test carefully and keep improving the process.</p>
+        <p>I work with clients in the US, Australia and worldwide, on Philippine time (UTC+8).</p>
+        <ul class="pillars">
+          <li><strong>Create</strong><span>AI video production</span></li>
+          <li><strong>Teach</strong><span>Tutoring &amp; review classes</span></li>
+          <li><strong>Build</strong><span>Software &amp; automation</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- F. Contact -->
+  <section id="contact" class="section section-contact" aria-labelledby="contact-title">
+    <div class="container contact-grid">
+      <div class="contact-copy">
+        <p class="eyebrow">Contact</p>
+        <h2 id="contact-title">Let's work <em>together.</em></h2>
+        <p>Tell me about your video, project or idea. Send the form, or reach me directly.</p>
+        <ul class="contact-links">
+          <li><a href="mailto:johnmichaeljabuen11@gmail.com"><span>Email</span>johnmichaeljabuen11@gmail.com</a></li>
+          <li><a href="https://wa.me/639813743029" target="_blank" rel="noopener"><span>WhatsApp</span>+63 981 374 3029</a></li>
+          <li><a href="https://www.upwork.com/freelancers/~019e778135444ee36f?mp_source=share" target="_blank" rel="noopener"><span>Upwork</span>View my profile</a></li>
+          <li><a href="https://www.onlinejobs.ph/jobseekers/info/2896074" target="_blank" rel="noopener"><span>OnlineJobsPH</span>View my profile</a></li>
+          <li><a href="https://www.linkedin.com/in/john-michael-jabuen-7413a0261" target="_blank" rel="noopener"><span>LinkedIn</span>Connect with me</a></li>
+        </ul>
+      </div>
+
+      <!-- Contact form. To connect it, paste your Formspree form URL into data-endpoint
+           (for example https://formspree.io/f/abcdwxyz). Without it, the form opens the
+           visitor's email app with the message filled in. -->
+      <form id="contactForm" class="card contact-form" data-endpoint="" novalidate>
+        <div class="field">
+          <label for="cf-name">Name</label>
+          <input id="cf-name" name="name" type="text" autocomplete="name" required aria-describedby="cf-name-err">
+          <p class="field-error" id="cf-name-err"></p>
+        </div>
+        <div class="field">
+          <label for="cf-email">Email address</label>
+          <input id="cf-email" name="email" type="email" autocomplete="email" inputmode="email" required aria-describedby="cf-email-err">
+          <p class="field-error" id="cf-email-err"></p>
+        </div>
+        <div class="field">
+          <label for="cf-type">What do you need?</label>
+          <select id="cf-type" name="inquiry" required aria-describedby="cf-type-err">
+            <option value="">Choose one…</option>
+            <option>AI Video Production</option>
+            <option>AI UGC Ads</option>
+            <option>VSL Production</option>
+            <option>Animations</option>
+            <option>Podcast Videos</option>
+            <option>Workflow Automation</option>
+            <option>Software Engineering</option>
+            <option>Other</option>
+          </select>
+          <p class="field-error" id="cf-type-err"></p>
+        </div>
+        <div class="field">
+          <label for="cf-message">Message</label>
+          <textarea id="cf-message" name="message" rows="5" required aria-describedby="cf-message-err"></textarea>
+          <p class="field-error" id="cf-message-err"></p>
+        </div>
+        <!-- Spam trap for bots; hidden from people. -->
+        <input class="hp" type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <button class="btn btn-primary btn-block" type="submit">Send Message</button>
+        <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
+      </form>
+    </div>
+  </section>
 </main>
-<footer>© <span id="year"></span> John Michael E. Jabuen <span>CODE · TEACH · CREATE</span></footer>
-<div id="modal" class="modal"><div class="backdrop"></div><div class="dialog"><button id="close">×</button><div class="player"><div id="empty">Add a Google Drive file ID to play this video.</div><iframe id="frame" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe></div><div class="modalcopy"><label id="mk"></label><h3 id="mt"></h3><p id="md"></p></div></div></div>
-<script src="script.js"></script>
-</body></html>
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <p>© <span id="year">2026</span> John Michael E. Jabuen</p>
+    <p class="footer-links"><a href="mailto:johnmichaeljabuen11@gmail.com">Email</a><a href="https://www.upwork.com/freelancers/~019e778135444ee36f?mp_source=share" target="_blank" rel="noopener">Upwork</a><a href="https://www.linkedin.com/in/john-michael-jabuen-7413a0261" target="_blank" rel="noopener">LinkedIn</a><a href="#top">Back to top ↑</a></p>
+  </div>
+</footer>
+
+<!-- Video player popup -->
+<dialog id="videoDialog" class="dialog video-dialog" aria-labelledby="vdTitle">
+  <div class="vd-frame" id="vdFrame">
+    <p class="vd-loading" id="vdLoading">Loading video…</p>
+  </div>
+  <div class="vd-info">
+    <p class="tag" id="vdLabel"></p>
+    <h3 id="vdTitle">Video</h3>
+    <p id="vdDesc"></p>
+    <a class="text-link" id="vdOpen" href="#" target="_blank" rel="noopener">Open in Google Drive <span aria-hidden="true">↗</span></a>
+  </div>
+  <button class="dialog-close" type="button" data-close aria-label="Close video" autofocus>×</button>
+</dialog>
+
+<!-- Image viewer popup -->
+<dialog id="imageDialog" class="dialog image-dialog" aria-labelledby="ivCaption">
+  <img id="ivImg" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="">
+  <div class="iv-bar"><p id="ivCaption"></p><a class="text-link" id="ivOpen" href="#" target="_blank" rel="noopener">Open full size <span aria-hidden="true">↗</span></a></div>
+  <button class="dialog-close" type="button" data-close aria-label="Close image" autofocus>×</button>
+</dialog>
+
+<script src="videos.js" defer></script>
+<script src="script.js" defer></script>
+</body>
+</html>

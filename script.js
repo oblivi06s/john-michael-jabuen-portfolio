@@ -1,211 +1,247 @@
-// AI video slots are intentionally empty for now. Add your real videos later in this array.
-const videos = [
-    {
-        id: 1,
-        category: "ugc",
-        title: "Kleone Copper Antenna",
-        description: "A story-driven AI UGC video.",
-        driveId: "1QmFWx9NJ2xpf8H0E76jHYaTBqxozFqzV",
-        thumbnail: "https://drive.google.com/thumbnail?id=1QmFWx9NJ2xpf8H0E76jHYaTBqxozFqzV&sz=w1000",
-        label: "AI UGC"
-    },
+// Site behaviour. The video list lives in videos.js.
+(function () {
+  'use strict';
 
+  const $ = (sel, root = document) => root.querySelector(sel);
+  const $$ = (sel, root = document) => [...root.querySelectorAll(sel)];
 
-    {
-        id: 2,
-        category: "vsl",
-        title: "Educational VSL",
-        description: "A video sales letter that educates everyone regarding parasites.",
-        driveId: "1dqkHQcOa_SajV2vIaXhswr9SwQUigkdx",
-        thumbnail: "https://drive.google.com/thumbnail?id=1dqkHQcOa_SajV2vIaXhswr9SwQUigkdx&sz=w1000",
-        label: "VSL"
-    },
+  /* ---------- Shared: popups (native <dialog>) ---------- */
+  let lastFocus = null;
+  function openDialog(dialog) {
+    lastFocus = document.activeElement;
+    dialog.showModal();
+    document.body.classList.add('is-locked');
+  }
+  function closeDialog(dialog) {
+    if (dialog.open) dialog.close();
+  }
+  $$('dialog').forEach(dialog => {
+    dialog.addEventListener('close', () => {
+      document.body.classList.remove('is-locked');
+      dialog.dispatchEvent(new Event('dialog:closed'));
+      if (lastFocus) lastFocus.focus();
+    });
+    // Click on the dark backdrop closes the popup.
+    dialog.addEventListener('click', e => { if (e.target === dialog) closeDialog(dialog); });
+    $$('[data-close]', dialog).forEach(btn => btn.addEventListener('click', () => closeDialog(dialog)));
+  });
 
-    {
-        id: 3,
-        category: "animation",
-        title: "Ai 3D Cartoon",
-        description: "1920: a farmer bets his neighbour a pig that the copper stick won't work. ",
-        driveId: "18OHy1SPWbDGxZoBYpWhQrs6vKTetmeC_",
-        thumbnail: "https://drive.google.com/thumbnail?id=18OHy1SPWbDGxZoBYpWhQrs6vKTetmeC_&sz=w1000",
-        label: "Animation"
-    },
+  /* ---------- Mobile navigation ---------- */
+  const menuBtn = $('.menu-toggle');
+  const nav = $('#site-nav');
+  function setMenu(open) {
+    menuBtn.setAttribute('aria-expanded', String(open));
+    nav.classList.toggle('is-open', open);
+  }
+  menuBtn.addEventListener('click', () => setMenu(menuBtn.getAttribute('aria-expanded') !== 'true'));
+  nav.addEventListener('click', e => { if (e.target.closest('a')) setMenu(false); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape' && nav.classList.contains('is-open')) { setMenu(false); menuBtn.focus(); } });
+  document.addEventListener('click', e => { if (nav.classList.contains('is-open') && !e.target.closest('.site-header')) setMenu(false); });
 
-    {
-        id: 4,
-        category: "ugc",
-        title: "Kleone Copper Antenna",
-        description: "A farmer whose family hasn't bought fertilizer in four generations shows the copper his great-grandfather left in the barn.",
-        driveId: "1o7BFAzvgHLrAvRlsKChY7sJFEv_hBKOo",
-        thumbnail: "https://drive.google.com/thumbnail?id=1o7BFAzvgHLrAvRlsKChY7sJFEv_hBKOo&sz=w1000",
-        label: "AI UGC"
-    },
+  /* ---------- Video portfolio ---------- */
+  const CATEGORIES = [
+    { id: 'all', filter: 'All' },
+    { id: 'ugc', filter: 'AI UGC', badge: 'AI UGC' },
+    { id: 'animation', filter: 'Animations', badge: 'Animation' },
+    { id: 'podcast', filter: 'Podcast Videos', badge: 'Podcast' },
+    { id: 'vsl', filter: 'VSLs', badge: 'VSL' }
+  ];
+  const INITIAL_COUNT = 8; // cards shown before "Show all"
+  // videos.js declares `const videos` at the top level, so it is a global binding, not a window property.
+  const list = typeof videos !== 'undefined' && Array.isArray(videos) ? videos : [];
+  const grid = $('#videoGrid');
+  const filters = $('#videoFilters');
+  const moreBtn = $('#videoMore');
+  let current = 'all';
+  let expanded = false;
 
-    {
-        id: 5,
-        category: "vsl",
-        title: "Product VSL",
-        description: "A video sales letter with storytelling and product visuals.",
-        driveId: "1AL7egUPw04hvRSLR480beZIbgn8Uoy3-",
-        thumbnail: "https://drive.google.com/thumbnail?id=1AL7egUPw04hvRSLR480beZIbgn8Uoy3-&sz=w1000",
-        label: "VSL"
-    },
+  const badgeFor = id => (CATEGORIES.find(c => c.id === id) || {}).badge || '';
+  const escapeHtml = s => String(s ?? '').replace(/[&<>"']/g, ch => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[ch]));
 
-    {
-        id: 6,
-        category: "animation",
-        title: "Ai 3D Cartoon",
-        description: "1925: every farmer's wife on the road asks her the same question. It was a copper antenna.",
-        driveId: "1dyImlcHAItT5tvc5uE1fGxEZkhzT7zqh",
-        thumbnail: "https://drive.google.com/thumbnail?id=1dyImlcHAItT5tvc5uE1fGxEZkhzT7zqh&sz=w1000",
-        label: "Animation"
-    },
+  $$('[data-video-count]').forEach(el => { el.textContent = list.length; });
 
-    {
-        id: 7,
-        category: "ugc",
-        title: "Copper Antenna",
-        description: "Woman, 60s, looking at a stack of fertilizer bags in the garage.",
-        driveId: "1VfhT8nntgzSa8X4UxmPfYIvXX3WEjO58",
-        thumbnail: "https://drive.google.com/thumbnail?id=1VfhT8nntgzSa8X4UxmPfYIvXX3WEjO58&sz=w1000",
-        label: "AI UGC"
-    },
-    
-    {
-        id: 8,
-        category: "ugc",
-        title: "Copper Antenna",
-        description: "A skeptic opens the box, thinks they look like a shop-class project.",
-        driveId: "1ccWQ6ChxYIFJC8j892SuKfSIpbc8xS64",
-        thumbnail: "https://drive.google.com/thumbnail?id=1ccWQ6ChxYIFJC8j892SuKfSIpbc8xS64&sz=w1000",
-        label: "AI UGC"
-    },
+  filters.innerHTML = CATEGORIES
+    .map(c => ({ ...c, count: c.id === 'all' ? list.length : list.filter(v => v.category === c.id).length }))
+    .filter(c => c.count > 0)
+    .map(c => `<button class="filter" type="button" data-filter="${c.id}" aria-pressed="${c.id === current}">${c.filter}<span>${c.count}</span></button>`)
+    .join('');
 
-    {
-        id: 9,
-        category: "animation",
-        title: "Ai 3D Cartoon",
-        description: "Every village had one man who said it was nonsense. ",
-        driveId: "1f3fN2Ti_-c5TTYn6_HnSkPUvDZpTE9W7",
-        thumbnail: "https://drive.google.com/thumbnail?id=1f3fN2Ti_-c5TTYn6_HnSkPUvDZpTE9W7&sz=w1000",
-        label: "Animation"
-    },
+  filters.addEventListener('click', e => {
+    const btn = e.target.closest('[data-filter]');
+    if (!btn) return;
+    current = btn.dataset.filter;
+    expanded = false;
+    $$('[data-filter]', filters).forEach(b => b.setAttribute('aria-pressed', String(b === btn)));
+    renderVideos();
+  });
 
-    {
-        id: 10,
-        category: "animation",
-        title: "Ai 3D Cartoon",
-        description: "Grandma's secret wasn't in the soil. It was IN the soil.",
-        driveId: "17MDJX9bfztovr2o47bDh_IBzJ5lX9iva",
-        thumbnail: "https://drive.google.com/thumbnail?id=17MDJX9bfztovr2o47bDh_IBzJ5lX9iva&sz=w1000",
-        label: "Animation"
-    },
+  moreBtn.addEventListener('click', () => {
+    expanded = true;
+    renderVideos();
+    // Move focus to the first newly shown card for keyboard users.
+    const next = grid.children[INITIAL_COUNT];
+    if (next) next.querySelector('button').focus();
+  });
 
-    {
-        id: 11,
-        category: "ugc",
-        title: "JUPI Hydration Product",
-        description: "A story-driven AI UGC video.",
-        driveId: "1b6Ol8Nrxi3JfRpJFLYOYgI5rSy0hg9FR",
-        thumbnail: "https://drive.google.com/thumbnail?id=1b6Ol8Nrxi3JfRpJFLYOYgI5rSy0hg9FR&sz=w1000",
-        label: "AI UGC"
-    },
-    
+  function renderVideos() {
+    const matches = list.filter(v => current === 'all' || v.category === current);
+    const shown = expanded ? matches : matches.slice(0, INITIAL_COUNT);
+    if (!matches.length) {
+      grid.innerHTML = '<p class="notice">No videos in this category yet.</p>';
+    } else {
+      grid.innerHTML = shown.map((v, i) => {
+        const index = list.indexOf(v);
+        const landscape = v.orientation === 'landscape';
+        return `<div class="vc-item"><button class="video-card" type="button" data-video="${index}" aria-label="Play video: ${escapeHtml(v.title)}">
+          <span class="vc-thumb${landscape ? ' is-landscape' : ''}">
+            ${v.thumbnail ? `<img src="${escapeHtml(v.thumbnail)}" alt="" loading="${i < 4 ? 'eager' : 'lazy'}" decoding="async" referrerpolicy="no-referrer" onerror="this.remove()">` : ''}
+            <span class="vc-badges"><span class="badge">${badgeFor(v.category)}</span>${v.clientWork ? '<span class="badge badge-client">Client work</span>' : ''}${landscape ? '<span class="badge">16:9</span>' : ''}</span>
+            <span class="vc-play" aria-hidden="true"></span>
+          </span>
+          <span class="vc-body"><span class="vc-title">${escapeHtml(v.title)}</span><span class="vc-desc">${escapeHtml(v.description)}</span></span>
+        </button></div>`;
+      }).join('');
+    }
+    const hidden = matches.length - shown.length;
+    moreBtn.hidden = hidden <= 0;
+    moreBtn.textContent = `Show all ${matches.length} videos`;
+  }
 
-    {
-        id: 12,
-        category: "ugc",
-        title: "JUPI Hydration Product",
-        description: "An AI UGC video featuring a product story.",
-        driveId: "1scAU_VcWgn0rdNBPPLcVDJEnuUGWb-aD",
-        thumbnail: "https://drive.google.com/thumbnail?id=1scAU_VcWgn0rdNBPPLcVDJEnuUGWb-aD&sz=w1000",
-        label: "AI UGC"
-    },
+  grid.addEventListener('click', e => {
+    const card = e.target.closest('[data-video]');
+    if (card) openVideo(list[Number(card.dataset.video)]);
+  });
 
-    {
-        id: 13,
-        category: "ugc",
-        title: "JUPI Hydration Product",
-        description: "An AI UGC video teaching remedy and featuring a product.",
-        driveId: "1yX2AOPEqn7yMmk0sdUykUymbh6FW5EMq",
-        thumbnail: "https://drive.google.com/thumbnail?id=1yX2AOPEqn7yMmk0sdUykUymbh6FW5EMq&sz=w1000",
-        label: "AI UGC"
-    },
+  /* Video player popup. Drive's /preview URL is the only Drive player that
+     plays reliably inside a page for visitors without the Drive app. */
+  const videoDialog = $('#videoDialog');
+  const frameBox = $('#vdFrame');
+  const loading = $('#vdLoading');
 
-    {
-        id: 14,
-        category: "ugc",
-        title: "Soursop Bitters",
-        description: "A symptom-driven AI UGC video.",
-        driveId: "1_CSexI4AbnrQmQHl7WM49qvcDhYB2Igy",
-        thumbnail: "https://drive.google.com/thumbnail?id=1_CSexI4AbnrQmQHl7WM49qvcDhYB2Igy&sz=w1000",
-        label: "AI UGC"
-    },
+  function openVideo(v) {
+    if (!v) return;
+    $('#vdLabel').textContent = badgeFor(v.category) + (v.clientWork ? ' · Client work' : '');
+    $('#vdTitle').textContent = v.title;
+    $('#vdDesc').textContent = v.description || '';
+    videoDialog.classList.toggle('is-landscape', v.orientation === 'landscape');
 
-    {
-        id: 15,
-        category: "ugc",
-        title: "Recipe Video",
-        description: "An AI UGC Video teaching healthy recipe.",
-        driveId: "1IUsDSY5Mh1iqrQTu04U2UCjkc75UWWFR",
-        thumbnail: "https://drive.google.com/thumbnail?id=1IUsDSY5Mh1iqrQTu04U2UCjkc75UWWFR&sz=w1000",
-        label: "AI UGC"
-    },
+    const openLink = $('#vdOpen');
+    $$('iframe', frameBox).forEach(f => f.remove());
+    if (v.driveId) {
+      const id = encodeURIComponent(v.driveId);
+      openLink.href = `https://drive.google.com/file/d/${id}/view`;
+      openLink.hidden = false;
+      loading.textContent = 'Loading video…';
+      loading.hidden = false;
+      const iframe = document.createElement('iframe');
+      iframe.title = `Video player: ${v.title}`;
+      iframe.allow = 'autoplay; fullscreen; picture-in-picture';
+      iframe.allowFullscreen = true;
+      iframe.addEventListener('load', () => { loading.hidden = true; });
+      iframe.src = `https://drive.google.com/file/d/${id}/preview`;
+      frameBox.appendChild(iframe);
+    } else {
+      openLink.hidden = true;
+      loading.textContent = 'This video is not available yet.';
+      loading.hidden = false;
+    }
+    openDialog(videoDialog);
+  }
+  // Removing the iframe on close stops playback.
+  videoDialog.addEventListener('dialog:closed', () => $$('iframe', frameBox).forEach(f => f.remove()));
 
-    {
-        id: 16,
-        category: "ugc",
-        title: "JUPI Hydration Product",
-        description: "A warning-driven AI UGC Video.",
-        driveId: "1CNFNEUhe1b5TwBxX5yTajekPkefi4gbm",
-        thumbnail: "https://drive.google.com/thumbnail?id=1CNFNEUhe1b5TwBxX5yTajekPkefi4gbm&sz=w1000",
-        label: "AI UGC"
-    },
+  renderVideos();
 
-    {
-        id: 17,
-        category: "ugc",
-        title: "Soursop Bitters",
-        description: "AI UGC Video that promotes healthy habits.",
-        driveId: "1ZTIMJvzjYQYKfpXoJQFpZ6CUzyBN_fmq",
-        thumbnail: "https://drive.google.com/thumbnail?id=1ZTIMJvzjYQYKfpXoJQFpZ6CUzyBN_fmq&sz=w1000",
-        label: "AI UGC"
-    },
+  /* ---------- Image viewer (certificates, photos, slides) ---------- */
+  const imageDialog = $('#imageDialog');
+  const ivImg = $('#ivImg');
+  document.addEventListener('click', e => {
+    const trigger = e.target.closest('[data-viewer]');
+    if (!trigger) return;
+    const src = trigger.dataset.viewer;
+    const thumb = trigger.querySelector('img');
+    ivImg.src = src;
+    ivImg.alt = thumb ? thumb.alt : '';
+    $('#ivCaption').textContent = trigger.dataset.caption || '';
+    $('#ivOpen').href = src;
+    openDialog(imageDialog);
+  });
+  const BLANK = ivImg.src;
+  imageDialog.addEventListener('dialog:closed', () => { ivImg.src = BLANK; });
 
-    {
-        id: 18,
-        category: "ugc",
-        title: "Blueberry Tips",
-        description: "AI UGC Video that reveals a secret.",
-        driveId: "17lMvZyDbrqLE6QX5PhUwOzxSczh4pD90",
-        thumbnail: "https://drive.google.com/thumbnail?id=17lMvZyDbrqLE6QX5PhUwOzxSczh4pD90&sz=w1000",
-        label: "AI UGC"
-    },
+  /* ---------- Contact form ---------- */
+  const form = $('#contactForm');
+  const status = $('#formStatus');
+  const submitBtn = form.querySelector('[type="submit"]');
+  const EMAIL = 'johnmichaeljabuen11@gmail.com';
+  const emailOk = s => /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(s);
 
-    {
-        id: 19,
-        category: "vsl",
-        title: "Warning VSL",
-        description: "A video sales letter that provides symptoms and remedy.",
-        driveId: "1ibaO6Esc9yojX5unG68BqUJdnwNV5BIK",
-        thumbnail: "https://drive.google.com/thumbnail?id=1ibaO6Esc9yojX5unG68BqUJdnwNV5BIK&sz=w1000",
-        label: "VSL"
-    },
+  const rules = {
+    name: v => v.trim() ? '' : 'Please enter your name.',
+    email: v => !v.trim() ? 'Please enter your email address.' : emailOk(v.trim()) ? '' : 'Please enter a valid email, like name@example.com.',
+    inquiry: v => v ? '' : 'Please choose what you need.',
+    message: v => v.trim().length >= 10 ? '' : 'Please write a short message (at least 10 characters).'
+  };
 
+  function validateField(field) {
+    const rule = rules[field.name];
+    if (!rule) return true;
+    const msg = rule(field.value);
+    $('#' + field.getAttribute('aria-describedby')).textContent = msg;
+    field.setAttribute('aria-invalid', msg ? 'true' : 'false');
+    return !msg;
+  }
+  Object.keys(rules).forEach(name => {
+    const field = form.elements[name];
+    field.addEventListener('blur', () => { if (field.value) validateField(field); });
+    field.addEventListener('input', () => { if (field.getAttribute('aria-invalid') === 'true') validateField(field); });
+  });
 
-    {
-        id: 20,
-        category: "podcast",
-        title: "Testimony Podcast",
-        description: "A podcast-style ADS that provides first-hand experience.",
-        driveId: "1FWLIS9Hv0NHnWNyyUJ5xxRcGHUrPzd5X",
-        thumbnail: "https://drive.google.com/thumbnail?id=1FWLIS9Hv0NHnWNyyUJ5xxRcGHUrPzd5X&sz=w1000",
-        label: "PODCAST"
+  function setStatus(html, kind) {
+    status.className = 'form-status' + (kind ? ' is-' + kind : '');
+    status.innerHTML = html;
+  }
+
+  form.addEventListener('submit', async e => {
+    e.preventDefault();
+    const fields = Object.keys(rules).map(n => form.elements[n]);
+    const invalid = fields.filter(f => !validateField(f));
+    if (invalid.length) { invalid[0].focus(); setStatus('Please fix the highlighted fields.', 'error'); return; }
+    if (form.elements._gotcha.value) return; // bot
+
+    const data = Object.fromEntries(fields.map(f => [f.name, f.value.trim()]));
+    const endpoint = form.dataset.endpoint.trim();
+
+    // Not connected to a form service yet: hand the message to the visitor's email app.
+    if (!endpoint) {
+      const subject = `${data.inquiry} inquiry from ${data.name}`;
+      const body = `${data.message}\n\n— ${data.name} (${data.email})`;
+      window.location.href = `mailto:${EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      setStatus(`Your email app should open with the message ready to send. If it didn't, email me at <a href="mailto:${EMAIL}">${EMAIL}</a>.`);
+      return;
     }
 
-];
-const grid=document.getElementById('videoGrid'),tabs=[...document.querySelectorAll('.tabs button')],modal=document.getElementById('modal'),frame=document.getElementById('frame'),empty=document.getElementById('empty'),title=document.getElementById('mt'),desc=document.getElementById('md'),mk=document.getElementById('mk');
-function render(f='all'){grid.innerHTML='';const list=videos.filter(v=>f==='all'||v.category===f);if(!list.length){grid.innerHTML=`<div class="empty">${f==='all'?'Your AI video samples will appear here.':'No '+f.toUpperCase()+' samples added yet.'}<br><br><span style="color:#36efb0">Ready for your actual 9:16 work.</span></div>`;return}list.forEach(v=>{const c=document.createElement('article');c.className='video';c.innerHTML=`<div class="thumb">${v.thumbnail?`<img src="${v.thumbnail}" alt="${v.title}">`:''}<div class="play">▶</div></div><div class="vinfo"><b>${v.label}</b><h3>${v.title}</h3><p>${v.description}</p></div>`;c.onclick=()=>openVideo(v);grid.appendChild(c)})}
-function openVideo(v){title.textContent=v.title;desc.textContent=v.description;mk.textContent=v.label;if(v.driveId){frame.src=`https://drive.google.com/file/d/${v.driveId}/preview`;frame.style.display='block';empty.style.display='none'}else{frame.src='';frame.style.display='none';empty.style.display='grid'}modal.classList.add('open');document.body.style.overflow='hidden'}
-function closeVideo(){modal.classList.remove('open');frame.src='';document.body.style.overflow=''}
-tabs.forEach(t=>t.onclick=()=>{tabs.forEach(x=>x.classList.remove('active'));t.classList.add('active');render(t.dataset.filter)});document.getElementById('close').onclick=closeVideo;document.querySelector('.backdrop').onclick=closeVideo;document.addEventListener('keydown',e=>{if(e.key==='Escape')closeVideo()});document.getElementById('year').textContent=new Date().getFullYear();render();
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Sending…';
+    setStatus('Sending your message…');
+    try {
+      const res = await fetch(endpoint, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify({ ...data, _subject: `Portfolio: ${data.inquiry} inquiry from ${data.name}` })
+      });
+      if (!res.ok) throw new Error('HTTP ' + res.status);
+      form.reset();
+      fields.forEach(f => f.removeAttribute('aria-invalid'));
+      setStatus('Thanks! Your message was sent. I will reply to your email soon.', 'success');
+    } catch (err) {
+      setStatus(`Sorry, your message could not be sent. Please email me at <a href="mailto:${EMAIL}">${EMAIL}</a> or message me on <a href="https://wa.me/639813743029" target="_blank" rel="noopener">WhatsApp</a>.`, 'error');
+    } finally {
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Send Message';
+    }
+  });
+
+  /* ---------- Footer year ---------- */
+  $('#year').textContent = new Date().getFullYear();
+})();
