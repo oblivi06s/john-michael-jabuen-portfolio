@@ -1,15 +1,25 @@
-AI VIDEO SLOTS — V4
+HOW TO ADD OR EDIT PORTFOLIO VIDEOS
 
-The AI Video section is intentionally empty right now.
+Videos are hosted on Google Drive. Do not put video files in this repository.
 
-When you are ready:
-1. Open script.js.
-2. Find: const videos=[];
-3. Add video objects with category values: ugc, pixar, podcast, or vsl.
-4. For Google Drive, set driveId to the file ID and thumbnail to a Drive thumbnail URL.
-5. Keep the source videos in 9:16 format for the portfolio player.
+1. In Google Drive, share the video as "Anyone with the link can view".
+2. Copy the file ID from the share link:
+   https://drive.google.com/file/d/THIS_PART_IS_THE_ID/view
+3. Open videos.js and add an entry to the list:
 
-Example:
-const videos=[
-  {id:1,category:'ugc',title:'My AI UGC Sample',description:'Short description.',driveId:'YOUR_DRIVE_ID',thumbnail:'https://drive.google.com/thumbnail?id=YOUR_DRIVE_ID&sz=w1000',label:'AI UGC'}
-];
+    {
+        id: 21,
+        category: "ugc",              // ugc, animation, podcast or vsl
+        title: "My AI UGC Sample",
+        description: "One short sentence about the video.",
+        driveId: "YOUR_DRIVE_ID",
+        thumbnail: "https://drive.google.com/thumbnail?id=YOUR_DRIVE_ID&sz=w1000",
+        label: "AI UGC",
+        clientWork: true,             // optional: only for genuine client projects
+        orientation: "landscape"      // optional: only for 16:9 videos
+    },
+
+4. Save, open index.html in a browser, and check the new card plays.
+
+Videos appear in the same order as the list. The first 8 show on the page;
+visitors tap "Show all" to see the rest.

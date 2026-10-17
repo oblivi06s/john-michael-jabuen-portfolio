@@ -1,26 +1,28 @@
-# John Michael E. Jabuen — Portfolio V4
+# John Michael E. Jabuen — Portfolio
 
-This version fixes the evidence sections so the Software Developer and Academic Tutor & Review Master pages use the actual materials supplied for the portfolio.
+Freelance portfolio for AI video production, teaching and software work.
+Hosted on GitHub Pages from the `main` branch (see the repository's Settings → Pages for the live URL).
 
-## Included
-- Professional profile photo
-- Software research visuals from the NIDS 2026 presentation
-- NIDS certificate and full presentation PDFs
-- Undergraduate research evidence and results visuals
-- Tutor of the Year 2025 certification PDF
-- Tutor & Review Master Certificate of Employment PDF
-- Best Tutor recognition images: August 2024, December 2024, January 2025, January 2026
-- Brainbox / classroom photos
-- AI Video Editor section kept intentionally empty with 9:16 placeholders, ready for your actual videos
+## Structure
+- `index.html` — all page content, in this order: Hero, AI Video Production, Teaching & Recognition, Software Engineering & Automation, About, Contact.
+- `styles.css` — one stylesheet. Colours, type sizes and spacing are tokens at the top (`:root`).
+- `videos.js` — the list of portfolio videos (Google Drive). See `HOW_TO_ADD_VIDEOS.txt`.
+- `script.js` — video grid and filters, video and image popups, mobile menu, contact form.
+- `assets/` — original images and PDFs. `assets/optimized/` holds smaller copies used on the page; the originals open in the full-size viewer.
 
-## Open the site
-Open `index.html` in a browser.
+There is no build step and no dependencies.
 
-## V5 changes
-- Hero is now a two-column composition: headline/copy on the left and profile portrait on the right.
-- Software Developer projects are arranged as a 3-column x 2-row desktop grid, with the former oversized empty area removed.
-- AI Automation Journey is now part of the second row.
-- Typography was increased across the site for readability, with responsive adjustments for tablet and mobile.
-- About section highlights John Michael E. Jabuen by name.
-- Contact section now uses the provided email, LinkedIn, WhatsApp, and OnlineJobsPH details.
-- AI video samples remain intentionally empty placeholders.
+## Run locally
+Open `index.html` in a browser, or serve the folder so it behaves like GitHub Pages:
+
+    python3 -m http.server 8000
+
+then visit http://localhost:8000/.
+
+## Contact form setup (Formspree, free plan)
+1. Create a free account at https://formspree.io and add a new form. Use johnmichaeljabuen11@gmail.com as the destination.
+2. Copy the form endpoint, e.g. `https://formspree.io/f/abcdwxyz`. It is public, not a secret.
+3. In `index.html`, paste it into the form's `data-endpoint=""` attribute.
+4. Send one test message from the live site and confirm it in Formspree.
+
+Until the endpoint is set, the form opens the visitor's email app with their message filled in.
